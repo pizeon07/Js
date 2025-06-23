@@ -1,0 +1,136 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rock-Paper-Scissor</title>
+</head>
+<body>
+    <main>
+        <nav>
+            <h1>Rock-Paper-Scissor</h1>
+        </nav>
+        <div class="imgContainer">
+            <img src="rock.jpg" alt="rock" class="img">
+            <img src="paper.jpg" alt="paper" class="img">
+            <img src="scissor.jpg" alt="scissor"  class="img">
+        </div>
+
+        <div id="scoreContainer">
+            <div id="Score">
+                <span id="userScore">0</span>
+                <p>User</p>
+                <div id="Score">
+                <span id="computerScore">0</span>
+                <p>Computer</p>
+            </div>
+        </div>
+        <div class="resultContainer">
+            <p id="result">Play game to see result</p>
+        </div>
+    </main>
+    <script>
+        const result= document.querySelector('#result');
+        const resultContainer=document.querySelector('.resultContainer');
+        const userBoard=document.querySelector('#userScore');
+        const comBoard=document.querySelector('#computerScore');
+
+       let userScore=0;
+       let computerScore=0; 
+
+        const images=document.queySelectorAll('.img');
+
+        function generateComChoice(){
+            const options=['rock','paper','scissor'];
+            const index=Math.floor(Math.random()*3);//0,1,2
+            return options[index];
+        }
+
+        function showWinner(userChoice,computerChoice,userWin){
+            if(userWin){
+                result.textContent='You Win,${userChoice} beats ${computerChoice}';
+                resultContainer.style.backgroundColor='teal';
+                userScore++;
+                userBoard.textContent=userScore;
+            }else{
+                 result.textContent='You lose,${computerChoice} beats ${userChoice}';
+                resultContainer.style.backgroundColor='red';
+                computerScore++;
+                comBoard.textContent=computerScore;
+            }
+        }
+
+        function DrawGame(){
+            result.textContent='Game is Draw,Play again';
+            resultContainer.style.backgroundColor='purple';
+        }
+
+        function playGame(userChoice){
+            const computerChoice=generateComChoice();
+            if(userChoice===computerChoice){
+                DrawGame();
+            }else{
+                let userWin=true;
+                if(userChoice==='rock'){
+                    userWin=computerChoice==='scissor'?true:false;
+                } else if (userChoice==='paper'){
+                    userwin=computerChoice==='rock'?true:false;
+                }else{
+                    userwin=computerChoice==='paper'?true:false;
+                }
+                showWinner(userChoice,computerChoice,userWin);
+            }
+        }
+        images.forEach((image)=>{
+            image.addEventListener('click',()=>{
+                //console.log('clicked');
+                const userChoice=image.getAttribute('alt');
+                playGame(userChoice);
+            })
+        })
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <nav>
+            <h1>Rock-Paper-Scissors</h1>
+        </nav>
+
+        <div class="imgContainer">
+            <img src="rock.jpg" alt="rock" class="img" />
+            <img src="paper.jpg" alt="paper" class="img" />
+            <img src="scissor.jpg" alt="scissor" class="img" />
+        </div>
+
+        <div id="scoreContainer">
+            <div class="scoreBox">
+                <span id="userScore">0</span>
+                <p>User</p>
+            </div>
+            <div class="scoreBox">
+                <span id="computerScore">0</span>
+                <p>Computer</p>
+            </div>
+        </div>
+
+        <div class="resultContainer">
+            <p id="result">Play the game to see results</p>
+            <p id="computerChoiceDisplay">Computer chose: ?</p>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
